@@ -1,4 +1,5 @@
 const path = require('path')
+const tailwindcss = require('tailwindcss')
 
 module.exports = {
   stories: [
@@ -10,7 +11,19 @@ module.exports = {
     config.module.rules.push(
       {
         test: /\tailwind.css$/,
-        use: ['postcss-loader'],
+        use: [
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-import')(),
+                tailwindcss(path.resolve(__dirname, '../tailwind.config.js')),
+                require('autoprefixer'),
+              ],
+            },
+          },
+        ],
         include: path.resolve(__dirname, '../assets/css/'),
       },
       {
