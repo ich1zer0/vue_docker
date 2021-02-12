@@ -7,6 +7,7 @@
           <input
             class="mr-1"
             type="radio"
+            name="filter"
             :checked="checked === option.value"
             :value="option.value"
             @change="emitChangeEvent(option.value)"
