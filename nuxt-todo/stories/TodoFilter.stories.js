@@ -7,12 +7,14 @@ export default {
         options: ['all', 'working', 'done'],
       },
     },
+    checkedFilter: { action: 'change' },
   },
 }
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
-  template: '<TodoFilter v-bind="$props" v-on="$props" />',
+  template:
+    '<TodoFilter v-bind="$props" v-on="$props" @change="checkedFilter" />',
 })
 
 export const Default = Template.bind({})

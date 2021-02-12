@@ -1,10 +1,15 @@
 export default {
   title: 'Components/TodoList',
+  argTypes: {
+    handleRemoveTodo: { action: 'remove' },
+    handleToggleTodoState: { action: 'toggle' },
+  },
 }
 
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
-  template: '<TodoList v-bind="$props" v-on="$props" />',
+  template:
+    '<TodoList v-bind="$props" v-on="$props" @remove="handleRemoveTodo" @toggle="handleToggleTodoState" />',
 })
 
 export const Default = Template.bind({})
