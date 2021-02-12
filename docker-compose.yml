@@ -14,5 +14,5 @@ services:
     expose:
       - "5000"
     ports:
-      - "5000:6006"
+      - "5000:4000"
     command: "yarn storybook"

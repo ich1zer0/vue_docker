@@ -21,7 +21,7 @@ export default {
       '~/stories/**/*.stories.mdx',
       '~/stories/**/*.stories.@(js|jsx|ts|tsx)',
     ],
-    port: 6006,
+    port: 4000,
     parameters: {
       actions: { argTypesRegex: '^on[A-Z].*' },
     },
