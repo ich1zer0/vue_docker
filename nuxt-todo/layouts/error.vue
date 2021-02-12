@@ -11,7 +11,7 @@
       </h1>
     </section>
     <div class="text-center mt-6">
-      <nuxt-link class="text-sm text-blue-600" to="/">トップへ戻る</nuxt-link>
+      <NuxtLink class="text-sm text-blue-600" to="/">トップへ戻る</NuxtLink>
     </div>
   </div>
 </template>

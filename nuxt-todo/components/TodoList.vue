@@ -36,12 +36,12 @@
             <span class="text-sm text-gray-600 font-bold mr-2 sm:hidden">
               タイトル:
             </span>
-            <nuxt-link
+            <NuxtLink
               class="text-xl text-blue-600 break-all"
               :to="`/todo/${todo.id}`"
             >
               {{ todo.title }}
-            </nuxt-link>
+            </NuxtLink>
           </td>
           <td
             class="block sm:table-cell w-full sm:w-1/4 border border-b-0 border-l-0 border-r-0 px-4 py-2"

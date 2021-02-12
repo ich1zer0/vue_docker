@@ -6,9 +6,9 @@
         <section>
           <TodoDetail :todo="currentTodo" />
           <div class="text-right mt-6">
-            <nuxt-link class="text-sm text-blue-600" to="/">
+            <NuxtLink class="text-sm text-blue-600" to="/">
               トップへ戻る
-            </nuxt-link>
+            </NuxtLink>
           </div>
         </section>
       </main>
