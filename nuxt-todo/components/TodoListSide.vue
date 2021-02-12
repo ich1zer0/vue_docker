@@ -6,9 +6,9 @@
         :key="todo.id"
         class="border border-b-0 border-l-0 border-r-0 p-2"
       >
-        <NuxtLink class="text-blue-600 break-all" :to="`/todo/${todo.id}`">
+        <nuxt-link class="text-blue-600 break-all" :to="`/todo/${todo.id}`">
           {{ todo.title }}
-        </NuxtLink>
+        </nuxt-link>
       </li>
     </ul>
     <p v-else class="mt-2">他のタスクはありません。</p>
