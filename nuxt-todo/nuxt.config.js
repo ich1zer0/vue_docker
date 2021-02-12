@@ -15,4 +15,15 @@ export default {
     port: 3000,
     host: '0.0.0.0',
   },
+  storybook: {
+    addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+    stories: [
+      '~/stories/**/*.stories.mdx',
+      '~/stories/**/*.stories.@(js|jsx|ts|tsx)',
+    ],
+    port: 6006,
+    parameters: {
+      actions: { argTypesRegex: '^on[A-Z].*' },
+    },
+  },
 }
