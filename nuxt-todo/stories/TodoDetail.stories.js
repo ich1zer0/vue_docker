@@ -1,4 +1,4 @@
-import TodoDetail from '../components/TodoDetail'
+import TodoDetail from '~/components/TodoDetail'
 
 export default {
   title: 'Components/TodoDetail',

@@ -1,4 +1,5 @@
 const path = require('path')
+const rootPath = path.resolve(__dirname, '../')
 const tailwindcss = require('tailwindcss')
 
 module.exports = {
@@ -32,6 +33,7 @@ module.exports = {
         include: path.resolve(__dirname, '../'),
       }
     )
+    config.resolve.alias['~'] = rootPath
 
     return config
   },

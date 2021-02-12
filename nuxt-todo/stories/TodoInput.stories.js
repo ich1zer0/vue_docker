@@ -1,4 +1,4 @@
-import TodoInput from '../components/TodoInput'
+import TodoInput from '~/components/TodoInput'
 
 export default {
   title: 'Components/TodoInput',

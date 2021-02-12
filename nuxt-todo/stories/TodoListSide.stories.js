@@ -1,4 +1,4 @@
-import TodoListSide from '../components/TodoListSide'
+import TodoListSide from '~/components/TodoListSide'
 
 export default {
   title: 'Components/TodoListSide',

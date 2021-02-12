@@ -1,4 +1,4 @@
-import TodoFilter from '../components/TodoFilter'
+import TodoFilter from '~/components/TodoFilter'
 
 export default {
   title: 'Components/TodoFilter',
