@@ -1,8 +1,46 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  working_directory: ~/app
+  my-executor:
     docker:
-      - image: circleci/node:4.8.2 # ジョブのコマンドが実行されるプライマリ コンテナ
+      - image: circleci/node:lts-jessie
+commands:
+  restore_dependency:
     steps:
-      - checkout # プロジェクト ディレクトリ内のコードをチェック アウトします
-      - run: echo "hello world" # `echo` コマンドを実行します
+      - restore_cache:
+          name: Restore dependencies
+          key: dependency-cache-{{ checksum "./nuxt-todo/package.json" }}
+  save_dependency:
+    steps:
+      - save_cache:
+          name: Cache dependencies
+          key: dependency-cache-{{ checksum "./nuxt-todo/package.json" }}
+          paths:
+            - ~/app/nuxt-todo/node_modules
+jobs:
+  setup:
+    executor: my-executor
+    steps:
+      - checkout
+      - restore_dependency
+      - run:
+          name: yarn install
+          working_directory: ./nuxt-todo
+          command: yarn
+      - save_dependency
+  test:
+    executor: my-executor
+    steps:
+      - checkout
+      - restore_dependency
+      - run:
+          name: yarn test
+          working_directory: ./nuxt-todo
+          command: yarn test
+workflows:
+  setup_and_test:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup
