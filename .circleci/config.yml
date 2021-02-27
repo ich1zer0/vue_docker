@@ -40,7 +40,7 @@ jobs:
 workflows:
   setup_and_test:
     jobs:
-      - setup
+      - setup:
           filters:
             branches:
               only: develop
