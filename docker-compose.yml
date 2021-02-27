@@ -7,3 +7,12 @@ services:
     build: ./nuxt-todo
     ports:
       - 4000:3000
+  storybook:
+    image: vue-docker-image
+    container_name: storybook-docker
+    build: ./nuxt-todo
+    expose:
+      - "5000"
+    ports:
+      - "5000:4000"
+    command: "yarn storybook"
