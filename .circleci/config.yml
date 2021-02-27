@@ -9,12 +9,12 @@ commands:
     steps:
       - restore_cache:
           name: Restore dependencies
-          key: dependency-cache-{{ checksum "./nuxt-todo/package.json" }}
+          key: dependency-cache
   save_dependency:
     steps:
       - save_cache:
           name: Save dependencies
-          key: dependency-cache-{{ checksum "./nuxt-todo/package.json" }}
+          key: dependency-cache
           paths:
             - ./nuxt-todo/node_modules
 jobs:
