@@ -13,10 +13,10 @@ commands:
   save_dependency:
     steps:
       - save_cache:
-          name: Cache dependencies
+          name: Save dependencies
           key: dependency-cache-{{ checksum "./nuxt-todo/package.json" }}
           paths:
-            - ~/app/nuxt-todo/node_modules
+            - ./nuxt-todo/node_modules
 jobs:
   setup:
     executor: my-executor
