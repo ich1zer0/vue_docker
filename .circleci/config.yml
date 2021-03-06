@@ -1,0 +1,52 @@
+version: 2.1
+executors:
+  working_directory: ~/app
+  my-executor:
+    docker:
+      - image: circleci/node:lts-jessie
+commands:
+  restore_dependency:
+    steps:
+      - restore_cache:
+          name: Restore dependencies
+          key: dependency-cache
+  save_dependency:
+    steps:
+      - save_cache:
+          name: Save dependencies
+          key: dependency-cache
+          paths:
+            - ./nuxt-todo/node_modules
+jobs:
+  setup:
+    executor: my-executor
+    steps:
+      - checkout
+      - restore_dependency
+      - run:
+          name: yarn install
+          working_directory: ./nuxt-todo
+          command: yarn
+      - save_dependency
+  test:
+    executor: my-executor
+    steps:
+      - checkout
+      - restore_dependency
+      - run:
+          name: yarn test
+          working_directory: ./nuxt-todo
+          command: yarn test
+workflows:
+  setup_and_test:
+    jobs:
+      - setup:
+          filters:
+            branches:
+              only: develop
+      - test:
+          requires:
+            - setup
+          filters:
+            branches:
+              only: develop
