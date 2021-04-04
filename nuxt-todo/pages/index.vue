@@ -3,7 +3,7 @@
     <Loading v-if="isLoading" />
     <main v-else>
       <section>
-        <h1 class="text-3xl">ToDoリスト</h1>
+        <h1 class="text-3xl">ToDoリスト GitHub Actions Test</h1>
         <template v-if="isTodos">
           <div class="mt-2">
             <TodoFilter v-model="checkedFilter" :options="filterOptions" />
