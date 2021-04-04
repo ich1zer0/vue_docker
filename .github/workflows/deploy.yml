@@ -1,12 +1,7 @@
 name: Deploy
-defaults:
-  run:
-    working-directory: nuxt-todo
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches: [main]
 jobs:
   deploy:
     name: Build And Upload to S3
@@ -14,14 +9,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.0.0
-      - name: Set Node.js 14
+      - name: Set Node.js
         uses: actions/setup-node@v1
         with:
           node-version: "14"
-      - name: Install
-        run: yarn
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Install Dependencies
+        run: cd nuxt-todo && yarn
       - name: Build
-        run: yarn build
+        run: cd nuxt-todo && yarn generate
+      - name: Uninstall Yarn
+        if: always()
+        run: npm uninstall -g yarn
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -30,4 +30,4 @@ jobs:
           aws-region: ap-northeast-1
       - name: Copy files to AWS s3
         run: |
-          aws s3 sync ./dist s3://nuxt-todo
+          aws s3 sync ./nuxt-todo/dist s3://nuxt-todo
